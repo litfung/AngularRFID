@@ -61,18 +61,10 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   @Input()
   columns: TableColumn<Customer>[] = [
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'Image', property: 'image', type: 'image', visible: true },
-    { label: 'Name', property: 'name', type: 'text', visible: true, cssClasses: ['font-medium'] },
-    { label: 'First Name', property: 'firstName', type: 'text', visible: false },
-    { label: 'Last Name', property: 'lastName', type: 'text', visible: false },
-    { label: 'Contact', property: 'contact', type: 'button', visible: true },
-    { label: 'Address', property: 'address', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Street', property: 'street', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Zipcode', property: 'zipcode', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'City', property: 'city', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Phone', property: 'phoneNumber', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Labels', property: 'labels', type: 'button', visible: true },
-    { label: 'Actions', property: 'actions', type: 'button', visible: true }
+    { label: 'EPC', property: 'firstName', type: 'text', visible: true },
+    { label: 'MODULOROL', property: 'lastName', type: 'text', visible: true },
+    { label: 'LOCAL', property: 'address', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'HORA DE LECTURA', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];

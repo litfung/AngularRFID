@@ -23,7 +23,7 @@
     <div class="card overflow-auto -mt-16">
       <div class="bg-app-bar px-6 h-16 border-b sticky left-0" fxLayout="row" fxLayoutAlign="start center">
         <h2 class="title my-0 ltr:pr-4 rtl:pl-4 ltr:mr-4 rtl:ml-4 ltr:border-r rtl:border-l" fxFlex="none" fxHide.xs>
-          <span *ngIf="selection.isEmpty()">Customers</span>
+          <span *ngIf="selection.isEmpty()">Buscar por EPC</span>
           <span *ngIf="selection.hasValue()">{{ selection.selected.length }}
             Customer<span *ngIf="selection.selected.length > 1">s</span> selected</span>
         </h2>
@@ -51,7 +51,7 @@
           <ic-icon [icIcon]="icSearch" size="20px"></ic-icon>
           <input [formControl]="searchCtrl"
                  class="px-4 py-3 border-0 outline-none w-full bg-transparent"
-                 placeholder="Search..."
+                 placeholder="Buscar por EPC..."
                  type="search">
         </div>
 
@@ -104,94 +104,12 @@
           </td>
         </ng-container>
 
-        <!-- Image Column -->
-        <ng-container matColumnDef="image">
-          <th *matHeaderCellDef mat-header-cell></th>
-          <td *matCellDef="let row" class="w-8 min-w-8 pr-0" mat-cell>
-            <img [src]="row['imageSrc']" class="avatar h-8 w-8 align-middle">
-          </td>
-        </ng-container>
-
         <!-- Text Columns -->
         <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
           <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
             <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}</th>
             <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}</td>
           </ng-container>
-        </ng-container>
-
-        <!-- Contact Column -->
-        <ng-container matColumnDef="contact">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
-          <td *matCellDef="let row" mat-cell>
-            <div class="flex">
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center hover:bg-hover text-primary bg-primary-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icPhone" size="18px"></mat-icon>
-              </a>
-
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-teal bg-teal-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icMail" size="18px"></mat-icon>
-              </a>
-
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-green bg-green-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icMap" size="18px"></mat-icon>
-              </a>
-            </div>
-          </td>
-        </ng-container>
-
-        <!-- Label Column -->
-        <ng-container matColumnDef="labels">
-          <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header>Labels</th>
-          <td *matCellDef="let row" mat-cell>
-            <div (click)="$event.stopPropagation()" fxLayoutAlign="start center" fxLayoutGap="4px">
-              <div *ngFor="let label of row.labels"
-                   [ngClass]="[label.textClass, label.bgClass]"
-                   class="rounded px-2 py-1 font-medium text-xs"
-                   fxFlex="none">
-                {{ label.text }}
-              </div>
-              <div (click)="labelSelect.open()"
-                   class="text-secondary bg-base text-hint cursor-pointer hover:bg-hover"
-                   fxFlex="none"
-                   fxLayout="row"
-                   fxLayoutAlign="center center">
-                <ic-icon [icon]="icAdd" size="18px"></ic-icon>
-              </div>
-              <mat-select #labelSelect="matSelect"
-                          (selectionChange)="onLabelChange($event, row)"
-                          [value]="row.labels"
-                          class="invisible w-0 h-0 text-sm"
-                          fxFlex="0 1 0px"
-                          multiple>
-                <mat-option *ngFor="let label of labels" [value]="label">
-                  <div [ngClass]="label.previewClass"
-                       class="h-6 w-6 align-middle ltr:mr-2 rtl:ml-2 rounded inline-block"></div>
-                  <span>{{ label.text }}</span>
-                </mat-option>
-              </mat-select>
-            </div>
-          </td>
-        </ng-container>
-
-        <!-- Action Column -->
-        <ng-container matColumnDef="actions">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
-          <td *matCellDef="let row" class="w-10 text-secondary" mat-cell>
-            <button (click)="$event.stopPropagation()"
-                    [matMenuTriggerData]="{ customer: row }"
-                    [matMenuTriggerFor]="actionsMenu"
-                    mat-icon-button
-                    type="button">
-              <mat-icon [icIcon]="icMoreHoriz"></mat-icon>
-            </button>
-          </td>
         </ng-container>
 
         <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
