@@ -61,10 +61,11 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   @Input()
   columns: TableColumn<Customer>[] = [
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'EPC', property: 'firstName', type: 'text', visible: true },
-    { label: 'MODULOROL', property: 'lastName', type: 'text', visible: true },
-    { label: 'LOCAL', property: 'address', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'HORA DE LECTURA', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'TAG', property: 'firstName', type: 'text', visible: true },
+    { label: 'Movimiento', property: 'lastName', type: 'text', visible: true },
+    { label: 'Antena', property: 'name', type: 'text', visible: true, cssClasses: ['font-medium'] },
+    { label: 'Ubicación', property: 'address', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'HORA DE SALIDA', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];

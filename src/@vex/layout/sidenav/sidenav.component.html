@@ -4,8 +4,8 @@
      [class.open]="collapsed && collapsedOpen$ | async"
      class="sidenav flex flex-col">
   <div class="sidenav-toolbar flex-none flex items-center">
-    <img [src]="imageUrl$ | async" class="w-6 select-none flex-none">
-    <h2 class="title ltr:pl-4 rtl:pr-4 select-none flex-auto">{{ title$ | async }}</h2>
+    <img src="../../../assets/img/demo/logo.png" class="w-30 h-10 select-none flex-none">
+    <h2 class="title ltr:pl-3 rtl:pr-3 select-none flex-auto">TAG EPC</h2>
     <button (click)="toggleCollapse()"
             *ngIf="showCollapsePin$ | async"
             class="w-8 h-8 -mr-2 leading-none flex-none hidden lg:block"
