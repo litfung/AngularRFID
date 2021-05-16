@@ -19,7 +19,7 @@ import icEditLocation from '@iconify/icons-ic/twotone-edit-location';
   styleUrls: ['./customer-create-update.component.scss']
 })
 export class CustomerCreateUpdateComponent implements OnInit {
-
+/*
   static id = 100;
 
   form: FormGroup;
@@ -42,8 +42,9 @@ export class CustomerCreateUpdateComponent implements OnInit {
               private dialogRef: MatDialogRef<CustomerCreateUpdateComponent>,
               private fb: FormBuilder) {
   }
-
+*/
   ngOnInit() {
+    /*
     if (this.defaults) {
       this.mode = 'update';
     } else {
@@ -60,9 +61,9 @@ export class CustomerCreateUpdateComponent implements OnInit {
       zipcode: this.defaults.zipcode || '',
       phoneNumber: this.defaults.phoneNumber || '',
       notes: this.defaults.notes || ''
-    });
+    });*/
   }
-
+/*
   save() {
     if (this.mode === 'create') {
       this.createCustomer();
@@ -94,5 +95,5 @@ export class CustomerCreateUpdateComponent implements OnInit {
 
   isUpdateMode() {
     return this.mode === 'update';
-  }
+  }*/
 }

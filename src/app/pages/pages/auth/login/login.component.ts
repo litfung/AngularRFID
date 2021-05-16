@@ -8,6 +8,7 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 import { LoginService } from './servicio/login.service';
 import { LoginI } from './modelos/login.interface';
 import { ResponseI } from './modelos/response.interface';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'vex-login',
@@ -44,9 +45,12 @@ export class LoginComponent implements OnInit {
 
   send(form:LoginI) {
     this.api.loginbyEmail(form).subscribe(data =>{
-      console.log(data);
-    })
-    console.log(form);
+      let dataResponse:ResponseI = data;
+      if(dataResponse.token != null){
+        localStorage.setItem("token",dataResponse.token);
+        this.router.navigate(['/forms/apps/aio-table']);
+      }
+    },(err:HttpErrorResponse)=>{alert(err.error);});
     //this.router.navigate(['/forms']);
     /*this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
       duration: 10000

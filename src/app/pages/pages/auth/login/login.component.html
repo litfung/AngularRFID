@@ -16,7 +16,7 @@
         <mat-form-field fxFlex="grow">
           <mat-label>Correo Electronico</mat-label>
           <input formControlName="username" matInput required>
-          <mat-error *ngIf="form.get('username').hasError('required')">Necesitamos una dirección de correo electrónico para iniciar sesión</mat-error>
+          <mat-error *ngIf="form.get('username').hasError('required')">Necesitamos un usuario para iniciar sesión</mat-error>
           <mat-error *ngIf="form.get('username').hasError('minlength')">El usuario tiene que ser mayor a 2 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="grow">

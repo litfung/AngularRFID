@@ -63,9 +63,9 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
     { label: 'TAG', property: 'firstName', type: 'text', visible: true },
     { label: 'Movimiento', property: 'lastName', type: 'text', visible: true },
-    { label: 'Antena', property: 'name', type: 'text', visible: true, cssClasses: ['font-medium'] },
-    { label: 'Ubicación', property: 'address', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'HORA DE SALIDA', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'Antena', property: 'phoneNumber', type: 'text', visible: true, cssClasses: ['font-medium'] },
+    { label: 'Ubicación', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'Hora de salida', property: 'mail', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];

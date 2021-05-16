@@ -113,10 +113,10 @@
         </ng-container>
 
         <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-        <tr (click)="updateCustomer(row)"
+        <tr 
             *matRowDef="let row; columns: visibleColumns;"
             @fadeInUp
-            class="hover:bg-hover trans-ease-out cursor-pointer"
+            class="hover:bg-hover trans-ease-out"
             mat-row></tr>
       </table>
 
