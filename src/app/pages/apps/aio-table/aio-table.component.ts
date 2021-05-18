@@ -61,11 +61,11 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   @Input()
   columns: TableColumn<Customer>[] = [
     { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'TAG', property: 'firstName', type: 'text', visible: true },
-    { label: 'Movimiento', property: 'lastName', type: 'text', visible: true },
-    { label: 'Antena', property: 'phoneNumber', type: 'text', visible: true, cssClasses: ['font-medium'] },
-    { label: 'Ubicación', property: 'street', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Hora de salida', property: 'mail', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'TAG', property: 'EPC', type: 'text', visible: true },
+    { label: 'Movimiento', property: 'ModuloId', type: 'text', visible: true },
+    { label: 'Antena', property: 'ModuloRol', type: 'text', visible: true, cssClasses: ['font-medium'] },
+    { label: 'Ubicación', property: 'Lecturas', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+    { label: 'Hora de salida', property: 'Local', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
   ];
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];
@@ -106,6 +106,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getData().subscribe(customers => {
+
       this.subject$.next(customers);
     });
 

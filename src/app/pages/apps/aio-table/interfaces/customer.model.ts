@@ -1,47 +1,33 @@
 export class Customer {
   id: number;
-  imageSrc: string;
-  firstName: string;
-  lastName: string;
-  street: string;
-  zipcode: number;
-  city: string;
-  phoneNumber: string;
-  mail: string;
-  labels: any;
+  EPC: string;
+  ModuloId: number;
+  ModuloRol: string;
+  Lecturas: number;
+  Local: string;
+  telefono: string;
+  Antena: string;
+  Empresa: string;
+  RUC: string;
+  UltimaLectura: string;
+  labels: string;
 
   constructor(customer) {
     this.id = customer.id;
-    this.imageSrc = customer.imageSrc;
-    this.firstName = customer.firstName;
-    this.lastName = customer.lastName;
-    this.street = customer.street;
-    this.zipcode = customer.zipcode;
-    this.city = customer.city;
-    this.phoneNumber = customer.phoneNumber;
-    this.mail = customer.mail;
+    this.EPC = customer.EPC;
+    this.ModuloId = customer.ModuloId;
+    this.Lecturas = customer.Lecturas;
+    this.Local = customer.Local;
+    this.telefono = customer.telefono;
+    this.Antena = customer.Antena;
+    this.Empresa = customer.Empresa;
+    this.RUC = customer.RUC;
+    this.UltimaLectura = customer.UltimaLectura;
     this.labels = customer.labels;
   }
 
-  get name() {
-    let name = '';
-
-    if (this.firstName && this.lastName) {
-      name = this.firstName + ' ' + this.lastName;
-    } else if (this.firstName) {
-      name = this.firstName;
-    } else if (this.lastName) {
-      name = this.lastName;
-    }
-
-    return name;
-  }
 
   set name(value) {
-  }
-
-  get address() {
-    return `${this.street}, ${this.zipcode} ${this.city}`;
   }
 
   set address(value) {

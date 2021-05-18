@@ -28,11 +28,30 @@ export const aioTableLabels = [
 export const aioTableData = [
   {
     id: 0,
-    firstName: '00-00-01-00-02-0E-00-10-04-60-E4-15',
-    lastName: 'Caja',
-    phoneNumber: 'Puerta 101',
-    street: 'Plaza Vea Chorrillos',
-    mail: '17:40',
-    labels: [aioTableLabels[0], aioTableLabels[1]]
+    EPC: '00-00-01-00-02-0E-00-10-04-60-E4-15',
+    ModuloId: 1,
+    ModuloRol: 'Caja',
+    Lecturas: 10,
+    Local: 'Plaza Vea Chorrillos',
+    telefono: '123456852',
+    Antena: 'Puerta 101',
+    Empresa: 'Plaza Vea',
+    RUC: '123456789',
+    UltimaLectura: '17:40',
+   // labels: [aio{TableLabels[0], aioTableLabels[1]]
+  },
+  {
+    id: 0,
+    EPC: '00-00-01-00-02-0E-00-10-04-60-E4-15',
+    ModuloId: 1,
+    ModuloRol: 'Caja',
+    Lecturas: 10,
+    Local: 'Plaza Vea Chorrillos',
+    telefono: '123456852',
+    Antena: 'Puerta 101',
+    Empresa: 'Plaza Vea',
+    RUC: '123456789',
+    UltimaLectura: '17:40',
+    //labels: [aio{TableLabels[0], aioTableLabels[1]]
   }
 ];

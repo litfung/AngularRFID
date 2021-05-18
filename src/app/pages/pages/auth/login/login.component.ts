@@ -55,14 +55,14 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/forms/apps/aio-table']);
     },(err:HttpErrorResponse)=>{ 
       if(err.status != 0){
-        console.log(err);
+        //console.log(err);
       this._snackBar.open(err.error, 'Cerrar', {
         horizontalPosition: "center",
         verticalPosition:"bottom",
         duration: 2 * 1000,
       });
     }else{
-      console.log(err);
+      //console.log(err);
       this._snackBar.open("Error en la conexión al servidor APIREST. ", 'Cerrar', {
         horizontalPosition: "center",
         verticalPosition:"bottom",
