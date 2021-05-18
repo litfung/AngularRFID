@@ -21,6 +21,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
+
   form: FormGroup;
 
   inputType = 'password';
@@ -29,11 +30,15 @@ export class LoginComponent implements OnInit {
   icVisibility = icVisibility;
   icVisibilityOff = icVisibilityOff;
 
+  errorStatus:boolean = false;
+  errorMsj:any = "";
+
   constructor(private router: Router,
               private fb: FormBuilder,
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
-              private api: LoginService
+              private api: LoginService,
+              private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -42,15 +47,30 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
   send(form:LoginI) {
     this.api.loginbyEmail(form).subscribe(data =>{
       let dataResponse:ResponseI = data;
-      if(dataResponse.token != null){
+
         localStorage.setItem("token",dataResponse.token);
         this.router.navigate(['/forms/apps/aio-table']);
-      }
-    },(err:HttpErrorResponse)=>{alert(err.error);});
+    },(err:HttpErrorResponse)=>{ 
+      if(err.status != 0){
+        console.log(err);
+      this._snackBar.open(err.error, 'Cerrar', {
+        horizontalPosition: "center",
+        verticalPosition:"bottom",
+        duration: 2 * 1000,
+      });
+    }else{
+      console.log(err);
+      this._snackBar.open("Error en la conexión al servidor APIREST. ", 'Cerrar', {
+        horizontalPosition: "center",
+        verticalPosition:"bottom",
+        duration: 2 * 1000,
+      });
+      
+    }
+    });
     //this.router.navigate(['/forms']);
     /*this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
       duration: 10000
