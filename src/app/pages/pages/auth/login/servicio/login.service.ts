@@ -10,15 +10,19 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  url:string = "https://localhost:44344";
+  url:string = "https://localhost:44344/";
 
   constructor(private http:HttpClient) { }
 
   loginbyEmail(form:LoginI):Observable<ResponseI>{
-
     let direccion = this.url + "/api/Usuario/login";
+    return this.http.post<ResponseI>(direccion, form);
+  }
 
+  login(model:any):Observable<ResponseI>{
+    let direccion = this.url + "api/Usuario/login";
     return this.http.post<ResponseI>(direccion, form);
 
   }
+
 }
