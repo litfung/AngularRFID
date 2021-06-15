@@ -15,11 +15,11 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   loginbyEmail(form:LoginI):Observable<ResponseI>{
-    let direccion = this.url + "/api/Usuario/login";
+    let direccion = this.url + "api/Usuario/login";
     return this.http.post<ResponseI>(direccion, form);
   }
 
-  login(model:any):Observable<ResponseI>{
+  login(form:any):Observable<ResponseI>{
     let direccion = this.url + "api/Usuario/login";
     return this.http.post<ResponseI>(direccion, form);
 

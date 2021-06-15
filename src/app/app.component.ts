@@ -122,6 +122,12 @@ export class AppComponent {
           },
           {
             type: 'link',
+            label: 'Lecturas Diarias',
+            route: '/forms/apps/lecturas-dia',
+            icon: icAssigment
+          },
+          {
+            type: 'link',
             label: 'Proximamente',
             route: '/forms',
             icon: icAssessment,

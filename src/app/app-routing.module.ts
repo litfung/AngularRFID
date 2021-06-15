@@ -75,6 +75,10 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/apps/help-center/help-center.module').then(m => m.HelpCenterModule),
           },
           {
+            path: 'lecturas-dia',
+            loadChildren: () => import('./pages/apps/lecturas-dia/lecturas-dia.module').then(m => m.LecturasDiaModule),
+          },
+          {
             path: 'scrumboard',
             loadChildren: () => import('./pages/apps/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
           },
