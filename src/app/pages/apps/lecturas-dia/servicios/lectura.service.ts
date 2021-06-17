@@ -35,8 +35,8 @@ export class LecturaService {
 
   //}
 
-  BuscarTag(form:ParametersDtoI):Observable<customerLectura>{
-  return this.http.post<customerLectura>(this.url + '/api/Reportes/LecturasDelDia' ,form, this.headers);
+  BuscarTag(form:ParametersDtoI):Observable<customerLectura[]>{
+  return this.http.post<customerLectura[]>(this.url + '/api/Reportes/LecturasDelDia' ,form, this.headers);
   }
  
 }

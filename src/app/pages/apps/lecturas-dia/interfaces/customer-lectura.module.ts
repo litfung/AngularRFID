@@ -1,28 +1,28 @@
 export class customerLectura {
     id: number;
-    EPC: string;
-    ModuloId: number;
-    ModuloRol: string;
-    Lecturas: number;
-    Local: string;
+    epc: string;
+    moduloId: number;
+    moduloRol: string;
+    lecturas: number;
+    local: string;
     telefono: string;
-    Antena: string;
-    Empresa: string;
-    RUC: string;
-    UltimaLectura: string;
+    antena: string;
+    empresa: string;
+    ruc: string;
+    ultimaLectura: string;
     labels: string;
   
     constructor(customerLectura) {
       this.id = customerLectura.id;
-      this.EPC = customerLectura.EPC;
-      this.ModuloId = customerLectura.ModuloId;
-      this.Lecturas = customerLectura.Lecturas;
-      this.Local = customerLectura.Local;
+      this.epc = customerLectura.epc;
+      this.moduloId = customerLectura.moduloId;
+      this.lecturas = customerLectura.lecturas;
+      this.local = customerLectura.local;
       this.telefono = customerLectura.telefono;
-      this.Antena = customerLectura.Antena;
-      this.Empresa = customerLectura.Empresa;
-      this.RUC = customerLectura.RUC;
-      this.UltimaLectura = customerLectura.UltimaLectura;
+      this.antena = customerLectura.Antena;
+      this.empresa = customerLectura.empresa;
+      this.ruc = customerLectura.ruc;
+      this.ultimaLectura = customerLectura.ultimaLectura;
       this.labels = customerLectura.labels;
     }
   

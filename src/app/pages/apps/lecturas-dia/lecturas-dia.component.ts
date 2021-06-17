@@ -28,6 +28,7 @@ import icMap from '@iconify/icons-ic/twotone-map';
 import { customerLectura } from './interfaces/customer-lectura.module';
 import { LecturaService } from './servicios/lectura.service';
 import { ParametersDtoI } from './models/ParametersDto.interface';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'vex-lecturas-dia',
@@ -58,24 +59,25 @@ export class LecturasDiaComponent implements OnInit {
   subject$: ReplaySubject<customerLectura[]> = new ReplaySubject<customerLectura[]>(1);
   data$: Observable<customerLectura[]> = this.subject$.asObservable();
   customers: customerLectura[] = [];
-  parametros: ParametersDtoI;
+
 
   @Input()
-  columns: TableColumn<customerLectura>[] = [
-    { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
-    { label: 'TAG', property: 'EPC', type: 'text', visible: true },
-    { label: 'Movimiento', property: 'ModuloId', type: 'text', visible: true },
-    { label: 'Antena', property: 'ModuloRol', type: 'text', visible: true, cssClasses: ['font-medium'] },
-    { label: 'Ubicación', property: 'Lecturas', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Hora de salida', property: 'Local', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-  ];
+  // columns: TableColumn<customerLectura>[] = [
+  //   { label: 'Checkbox', property: 'checkbox', type: 'checkbox', visible: true },
+  //   { label: 'TAG', property: 'EPC', type: 'text', visible: true },
+  //   { label: 'Movimiento', property: 'ModuloId', type: 'text', visible: true },
+  //   { label: 'Antena', property: 'ModuloRol', type: 'text', visible: true, cssClasses: ['font-medium'] },
+  //   { label: 'Ubicación', property: 'Lecturas', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+  //   { label: 'Hora de salida', property: 'Local', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
+  // ];
 
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 20, 50];
   dataSource = new MatTableDataSource<customerLectura>(this.customers);
   selection = new SelectionModel<customerLectura>(true, []);
   searchCtrl = new FormControl();
-
+  displayedColumns: string[] = ['select', 'epc', 'moduloId','moduloRol','lecturas','local','telefono','antena','empresa','ruc','ultimaLectura'];
+  
   labels = aioTableLabels;
 
   icPhone = icPhone;
@@ -96,6 +98,7 @@ export class LecturasDiaComponent implements OnInit {
     fecha: new FormControl(''),
     ruc: new FormControl(''),
   });
+
   respuestaForm:any;
 
   constructor(public fB:FormBuilder,
@@ -103,8 +106,12 @@ export class LecturasDiaComponent implements OnInit {
               private dialog: MatDialog) {
   }
 
-  get visibleColumns() {
-    return this.columns.filter(column => column.visible).map(column => column.property);
+  // get visibleColumns() {
+  //   return this.columns.filter(column => column.visible).map(column => column.property);
+  // }
+
+  getData() {
+    return of(aioTableData.map(customer => new customerLectura(customer)));
   }
 
   ngOnInit() {
@@ -115,15 +122,17 @@ export class LecturasDiaComponent implements OnInit {
     moduloRol: ['', [Validators.required]],
     lecturas: ['', [Validators.required]],
     local: ['', [Validators.required]],
+    telefono:['',[Validators.required]],
     antena: ['', [Validators.required]],
     empresa: ['', [Validators.required]],
     ruc:  ['', [Validators.required]],
     ultimaLectura: ['', [Validators.required]],
   });
-    // this.getData().subscribe(customers => {
 
-    //   this.subject$.next(customers);
-    // });
+    this.getData().subscribe(customers => {
+
+      this.subject$.next(customers);
+    });
 
     this.dataSource = new MatTableDataSource();
 
@@ -141,14 +150,12 @@ export class LecturasDiaComponent implements OnInit {
 
   BuscarTag(){
     this.service.BuscarTag(this.lecturaForm.value).subscribe(
-      resp=> {
-      console.log(resp);
-          debugger
-          //this.CargarBusqueda();
-      // Swal.fire('Actualizado', 'success' );
+        resp => {
+        console.log(resp);
+        debugger
+        this.customers = resp;
     });
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -200,6 +207,14 @@ export class LecturasDiaComponent implements OnInit {
     const index = this.customers.findIndex(c => c === row);
     this.customers[index].labels = change.value;
     this.subject$.next(this.customers);
+  }
+
+  //changes
+  checkboxLabel(row?: customerLectura): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
 }
