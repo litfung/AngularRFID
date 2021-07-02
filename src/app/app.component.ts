@@ -128,6 +128,12 @@ export class AppComponent {
           },
           {
             type: 'link',
+            label: 'Lecturas Alertadas Por Dia',
+            route: '/forms/apps/lecturas-alertadas-dia',
+            icon: icAssigment
+          },
+          {
+            type: 'link',
             label: 'Proximamente',
             route: '/forms',
             icon: icAssessment,
