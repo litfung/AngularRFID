@@ -6,7 +6,7 @@
     <div class="card overflow-auto -mt-16">
       <div class="bg-app-bar px-6 h-16 border-b sticky left-0" fxLayout="row" fxLayoutAlign="start center">
         <h2 class="title my-0 ltr:pr-4 rtl:pl-4 ltr:mr-4 rtl:ml-4 ltr:border-r rtl:border-l" fxFlex="none" fxHide.xs>
-          <span *ngIf="selection.isEmpty()">Buscar por TAG</span>
+          <span>Buscar por Fecha</span>
           <span *ngIf="selection.hasValue()">{{ selection.selected.length }}
             TAG<span *ngIf="selection.selected.length > 1">s</span> Seleccionado</span>
         </h2>
@@ -24,18 +24,6 @@
               <input formControlName="fecha"
                   class="px-4 py-3 border-0 outline-none w-full bg-transparent"
                   placeholder="Example: 2021-06-03"
-                  type="text">
-            </div>
-
-            <div class="bg-card rounded-full border px-4"
-                fxFlex="400px"
-                fxFlex.lt-md="auto"
-                fxHide.xs
-                fxLayout="row"
-                fxLayoutAlign="start center">
-              <input formControlName="ruc"
-                  class="px-4 py-3 border-0 outline-none w-full bg-transparent"
-                  placeholder="Ingrese Ruc"
                   type="text">
             </div>
 
@@ -135,9 +123,7 @@
       (click)="selection.toggle(row)">
   </tr>
 </table>
-
-
-
+<mat-paginator [pageSizeOptions]="[5, 25, 50, 100]"></mat-paginator>
 
 <!-- changes -->
 <!-- <form class="form-horizontal p-t-20"

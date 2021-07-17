@@ -8,6 +8,9 @@ export interface ResponseI{
     telefono: string;
     celular: string;
     direccion: string;
+    empresaId: string;
+    empresaNombre: string;
+    ruc: string;
     userName: string;
     token: string;
 }

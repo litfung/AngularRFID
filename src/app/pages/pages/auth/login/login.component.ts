@@ -19,6 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     fadeInUp400ms
   ]
 })
+
 export class LoginComponent implements OnInit {
 
 
@@ -52,7 +53,8 @@ export class LoginComponent implements OnInit {
       let dataResponse:ResponseI = data;
 
         localStorage.setItem("token",dataResponse.token);
-        this.router.navigate(['/forms/apps/aio-table']);
+        localStorage.setItem("ruc",dataResponse.ruc);
+        this.router.navigate(['/forms/apps/lecturas-dia']);
     },(err:HttpErrorResponse)=>{ 
       if(err.status != 0){
         //console.log(err);
